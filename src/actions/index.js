@@ -5,18 +5,15 @@ import parse from 'csv-parse';
 const apiKey = 'VJ6cBdw9ajZYok4srDmb';
 let csvData = [];
 const symbols = () => {
-	fs.createReadStream(req.file.path)
-	    .pipe(parse({delimiter: ':'}))
-	    .on('data', function(csvrow) {
-	        console.log(csvrow);
-	        //do something with csvrow
-	        csvData.push(csvrow);        
-	    })
-	    .on('end',function() {
-	      //do something wiht csvData
-	      console.log(csvData);
-	    });
 
+	fs.readFile('XTSE-datasets-codes.csv', function (err1, data) {
+    	if (err1) {
+        console.error(err1);
+    	} else {
+        var myData = JSON.parse(data);
+        //Do some operation on myData here
+    	}
+	}
 };
 
 export default apiKey;
